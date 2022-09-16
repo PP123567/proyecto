@@ -150,7 +150,9 @@ public class Inventario extends javax.swing.JFrame {
         bt_administrar_Horarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_administrar_Horarios.setText("               Administrar horarios");
         bt_administrar_Horarios.setBorder(null);
+        bt_administrar_Horarios.setContentAreaFilled(false);
         bt_administrar_Horarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_administrar_Horarios.setFocusPainted(false);
         bt_administrar_Horarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_administrar_HorariosActionPerformed(evt);
@@ -161,12 +163,14 @@ public class Inventario extends javax.swing.JFrame {
         bt_administrar_Usuarios.setBackground(new java.awt.Color(255, 255, 255));
         bt_administrar_Usuarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_administrar_Usuarios.setText("                 Administrar usuarios");
+        bt_administrar_Usuarios.setContentAreaFilled(false);
         bt_administrar_Usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pn_menuLateral.add(bt_administrar_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 350, 60));
 
         bt_reportes.setBackground(new java.awt.Color(255, 255, 255));
         bt_reportes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_reportes.setText("Reportes ");
+        bt_reportes.setContentAreaFilled(false);
         bt_reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,10 +182,11 @@ public class Inventario extends javax.swing.JFrame {
         bt_rondines.setBackground(new java.awt.Color(255, 255, 255));
         bt_rondines.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_rondines.setText("Rondines ");
+        bt_rondines.setContentAreaFilled(false);
         bt_rondines.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pn_menuLateral.add(bt_rondines, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 350, 60));
 
-        bt_inventario.setBackground(new java.awt.Color(255, 255, 255));
+        bt_inventario.setBackground(new java.awt.Color(204, 204, 204));
         bt_inventario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_inventario.setText(" Inventario ");
         bt_inventario.setBorder(null);
@@ -191,6 +196,7 @@ public class Inventario extends javax.swing.JFrame {
         bt_notificaciones.setBackground(new java.awt.Color(255, 255, 255));
         bt_notificaciones.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_notificaciones.setText("    Notificaciones");
+        bt_notificaciones.setContentAreaFilled(false);
         bt_notificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pn_menuLateral.add(bt_notificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 350, 60));
 
@@ -226,6 +232,7 @@ public class Inventario extends javax.swing.JFrame {
 
         cb_equipoDeComputo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        bt_consultar.setBackground(new java.awt.Color(107, 8, 48));
         bt_consultar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_consultar.setText("consultar");
 
@@ -235,29 +242,34 @@ public class Inventario extends javax.swing.JFrame {
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
                 .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_principalLayout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(lb_inventario))
-                    .addGroup(pn_principalLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(lb_laboratorios)
-                        .addGap(19, 19, 19)
-                        .addComponent(cb_laboratorios, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(232, 232, 232)
-                        .addComponent(lb_equipoDeComputo)
-                        .addGap(21, 21, 21)
-                        .addComponent(cb_equipoDeComputo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pn_principalLayout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(bt_consultar))
-                    .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                        .addGap(56, 56, 56)
+                        .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_principalLayout.createSequentialGroup()
+                                .addGap(323, 323, 323)
+                                .addComponent(lb_inventario))
+                            .addGroup(pn_principalLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(lb_laboratorios)
+                                .addGap(19, 19, 19)
+                                .addComponent(cb_laboratorios, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(232, 232, 232)
+                                .addComponent(lb_equipoDeComputo)
+                                .addGap(21, 21, 21)
+                                .addComponent(cb_equipoDeComputo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_principalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_consultar)
+                        .addGap(443, 443, 443))))
         );
         pn_principalLayout.setVerticalGroup(
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pn_principalLayout.createSequentialGroup()
+                .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(lb_inventario)
@@ -270,10 +282,11 @@ public class Inventario extends javax.swing.JFrame {
                         .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lb_laboratorios)
                             .addComponent(lb_equipoDeComputo))))
-                .addGap(60, 60, 60)
+                .addGap(123, 123, 123)
+                .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_consultar)
-                .addGap(32, 32, 32)
-                .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,7 +304,7 @@ public class Inventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administrar_HorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_HorariosActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_bt_administrar_HorariosActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
