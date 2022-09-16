@@ -26,7 +26,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel_candadoImagen,"src/img/candado.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel_iscImagen,"src/img/isc.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel_principalImagen,"src/img/lab.jpg");
