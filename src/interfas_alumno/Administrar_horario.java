@@ -150,7 +150,7 @@ public class Administrar_horario extends javax.swing.JFrame {
         cb_horaFin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00" }));
 
         bt_vaciar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        bt_vaciar.setText("Vacíar horarios");
+        bt_vaciar.setText("Vacíar horario");
 
         bt_registrar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bt_registrar.setText("Registrar clase");
@@ -418,22 +418,14 @@ public class Administrar_horario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_horaInicio;
     private javax.swing.JComboBox<String> cb_materia;
     private javax.swing.JComboBox<String> cb_profesor;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_LAS;
     private javax.swing.JLabel lb_LDM;
