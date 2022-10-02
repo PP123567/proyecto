@@ -51,14 +51,14 @@ public class login extends javax.swing.JFrame {
             }
             if (usuario1.equals(usuario)) {
                 if (contraseña1.equals(contraseña)) {
-               // los_mejores ventana = new los_mejores(tipo,nom);
-                //ventana.setVisible(true);
+                los_mejores ventana = new los_mejores(tipo,nom);
+                ventana.setVisible(true);
                 this.setVisible(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "contraseña incorecta","contraseña incorecta",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/password-300x300.png"));
+                    JOptionPane.showMessageDialog(null, "contraseña incorecta","contraseña incorecta",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/contrasena-incorrecta.png"));
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "usuario no existe","usuario no existe",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/6380220.png"));
+                JOptionPane.showMessageDialog(null, "usuario no existe","usuario no existe",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/desconocido.png"));
             } 
         } catch (Exception ex) {
             //JOptionPane.showMessageDialog(null, ex.toString());
@@ -295,7 +295,7 @@ public class login extends javax.swing.JFrame {
 
     private void btn_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresoActionPerformed
         if(TextField_usuario.getText().equals("Ingrese su usuario") ||  String.valueOf(txtfid_contraseña.getPassword()).equals("******")){
-            JOptionPane.showMessageDialog(null,"Campos vacios","Campos vacios",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/upt.png"));
+            JOptionPane.showMessageDialog(null,"Campos vacios","Campos vacios",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/documento.png"));
             }else{
         verificar();
         }
