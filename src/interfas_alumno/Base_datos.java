@@ -16,16 +16,17 @@ import java.util.logging.Logger;
  */
 public class Base_datos {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String RUTA = "jdbc:mysql://localhost/laboratios";
+    public static final String RUTA = "jdbc:mysql://localhost/LABORATORIOS_DE_COMPUTO";
     public static final String USUARIO = "root";
     public static final String PASSWORD = "12345";
     
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(RUTA, USUARIO, PASSWORD);
         } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
         return connection;
     }

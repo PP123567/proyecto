@@ -36,33 +36,34 @@ public class login extends javax.swing.JFrame {
     private void verificar() {
        String usuario= TextField_usuario.getText();
        String contraseña=txtfid_contraseña.getText();
-        /*try {
-             String usuario1="",contraseña1="",tipo="",nom="";
-            Connection con = Conexion.getConexion();
+        try {
+            String usuario1="",contraseña1="",tipo="",nom="";
+            Connection connection = Base_datos.getConnection();
             PreparedStatement ps;
             ResultSet rs;
-            ps = con.prepareStatement("SELECT usuario,contraseña,tipo,Nombre FROM usuarios where usuario='"+usuario+"'");
+            ps = connection.prepareStatement("SELECT * FROM Usuarios");
             rs = ps.executeQuery();
             while(rs.next()){
-            usuario1=rs.getString("usuario");
-            contraseña1=rs.getString("contraseña");
-            tipo=rs.getString("tipo");
+            usuario1=rs.getString("Id");
+            contraseña1=rs.getString("Contraseña");
+            tipo=rs.getString("TipoUsuario");
             nom=rs.getString("Nombre");
             }
             if (usuario1.equals(usuario)) {
                 if (contraseña1.equals(contraseña)) {
-                los_mejores ventana = new los_mejores(tipo,nom);
+                Reservar_salon ventana = new Reservar_salon( );
                 ventana.setVisible(true);
                 this.setVisible(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "contraseña incorecta","contraseña incorecta",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/contrasena-incorrecta.png"));
+                    JOptionPane.showMessageDialog(null, "contraseña Incorecta","ERROR",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/contrasena-incorrecta.png"));
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "usuario no existe","usuario no existe",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/desconocido.png"));
+                JOptionPane.showMessageDialog(null, "El Usuario No Existe","ERROR",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/desconocido.png"));
             } 
         } catch (Exception ex) {
-            //JOptionPane.showMessageDialog(null, ex.toString());
-        }*/
+            System.out.println("Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,6 +91,7 @@ public class login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(23, 23, 23));
         jPanel1.setForeground(new java.awt.Color(23, 23, 23));

@@ -5,6 +5,15 @@
  */
 package interfas_alumno;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author liooficial
@@ -17,6 +26,8 @@ public class Inventario extends javax.swing.JFrame {
     public Inventario() {
         initComponents();
          this.setLocationRelativeTo(null);
+         llenar_laboratorios();
+         llenar_Equipos();
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_usuarioImg,"src/img/administrador.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_logoImg,"src/img/isc.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_administrarImg,"src/img/calendario.png");
@@ -68,6 +79,7 @@ public class Inventario extends javax.swing.JFrame {
         lb_equipoDeComputo = new javax.swing.JLabel();
         cb_equipoDeComputo = new javax.swing.JComboBox<>();
         bt_consultar = new javax.swing.JToggleButton();
+        bt_limpiar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,7 +118,7 @@ public class Inventario extends javax.swing.JFrame {
         pn_rojoLayout.setVerticalGroup(
             pn_rojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_rojoLayout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lb_nombreDelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,7 +129,7 @@ public class Inventario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pn_menuLateral.add(pn_rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 350, -1));
+        pn_menuLateral.add(pn_rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 350, 160));
 
         lb_administrarImg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_administrarImg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -165,6 +177,11 @@ public class Inventario extends javax.swing.JFrame {
         bt_administrar_Usuarios.setText("                 Administrar usuarios");
         bt_administrar_Usuarios.setContentAreaFilled(false);
         bt_administrar_Usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_administrar_Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_administrar_UsuariosActionPerformed(evt);
+            }
+        });
         pn_menuLateral.add(bt_administrar_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 350, 60));
 
         bt_reportes.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,6 +201,11 @@ public class Inventario extends javax.swing.JFrame {
         bt_rondines.setText("Rondines ");
         bt_rondines.setContentAreaFilled(false);
         bt_rondines.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_rondines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rondinesActionPerformed(evt);
+            }
+        });
         pn_menuLateral.add(bt_rondines, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 350, 60));
 
         bt_inventario.setBackground(new java.awt.Color(204, 204, 204));
@@ -191,6 +213,11 @@ public class Inventario extends javax.swing.JFrame {
         bt_inventario.setText(" Inventario ");
         bt_inventario.setBorder(null);
         bt_inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_inventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_inventarioActionPerformed(evt);
+            }
+        });
         pn_menuLateral.add(bt_inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 350, 60));
 
         bt_notificaciones.setBackground(new java.awt.Color(255, 255, 255));
@@ -198,6 +225,11 @@ public class Inventario extends javax.swing.JFrame {
         bt_notificaciones.setText("    Notificaciones");
         bt_notificaciones.setContentAreaFilled(false);
         bt_notificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_notificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_notificacionesActionPerformed(evt);
+            }
+        });
         pn_menuLateral.add(bt_notificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 350, 60));
 
         lb_inventario.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -219,7 +251,6 @@ public class Inventario extends javax.swing.JFrame {
 
         lb_caracteristicas.setBackground(new java.awt.Color(204, 204, 204));
         lb_caracteristicas.setText("La impresionante IdeaCentre 3 AIO es ideal tanto si necesitas trabajar en casa, como entretenerte; con su elegante soporte y base (pueden variar según el modelo), este todo en uno de 23.8” quedará genial en cualquier habitación y ahorrará un espacio muy necesario ");
-        lb_caracteristicas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pn_gris.add(lb_caracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 330, 210));
 
         cb_laboratorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -234,7 +265,21 @@ public class Inventario extends javax.swing.JFrame {
 
         bt_consultar.setBackground(new java.awt.Color(107, 8, 48));
         bt_consultar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bt_consultar.setText("consultar");
+        bt_consultar.setText("Consultar");
+        bt_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_consultarActionPerformed(evt);
+            }
+        });
+
+        bt_limpiar.setBackground(new java.awt.Color(107, 8, 48));
+        bt_limpiar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bt_limpiar.setText("Limpiar");
+        bt_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_principalLayout = new javax.swing.GroupLayout(pn_principal);
         pn_principal.setLayout(pn_principalLayout);
@@ -242,8 +287,8 @@ public class Inventario extends javax.swing.JFrame {
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_principalLayout.createSequentialGroup()
+                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_principalLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_principalLayout.createSequentialGroup()
@@ -258,35 +303,43 @@ public class Inventario extends javax.swing.JFrame {
                                 .addComponent(lb_equipoDeComputo)
                                 .addGap(21, 21, 21)
                                 .addComponent(cb_equipoDeComputo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_principalLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_principalLayout.createSequentialGroup()
+                        .addGap(218, 218, 218)
                         .addComponent(bt_consultar)
-                        .addGap(443, 443, 443))))
+                        .addGap(281, 281, 281)
+                        .addComponent(bt_limpiar)))
+                .addGap(60, 60, 60))
         );
         pn_principalLayout.setVerticalGroup(
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_principalLayout.createSequentialGroup()
-                .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pn_principalLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(lb_inventario)
-                .addGap(64, 64, 64)
-                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_laboratorios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_equipoDeComputo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pn_principalLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(32, 32, 32)
+                        .addComponent(lb_inventario)
                         .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_laboratorios)
-                            .addComponent(lb_equipoDeComputo))))
-                .addGap(123, 123, 123)
-                .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_consultar)
-                .addContainerGap())
+                            .addGroup(pn_principalLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_laboratorios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_equipoDeComputo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pn_principalLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lb_laboratorios)
+                                            .addComponent(lb_equipoDeComputo))))
+                                .addGap(123, 123, 123)
+                                .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_principalLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bt_consultar)
+                                    .addComponent(bt_limpiar))
+                                .addGap(20, 20, 20))))
+                    .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -304,13 +357,126 @@ public class Inventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administrar_HorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_HorariosActionPerformed
-        
+        Administrar_horario2 ventana = new Administrar_horario2( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_HorariosActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
-        // TODO add your handling code here:
+        Administrar_horario2 ventana = new Administrar_horario2( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_reportesActionPerformed
 
+    private void bt_administrar_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_UsuariosActionPerformed
+        Administrar_horario2 ventana = new Administrar_horario2( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
+
+    private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
+       Rondines ventana = new Rondines( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_rondinesActionPerformed
+
+    private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
+        Administrar_horario2 ventana = new Administrar_horario2( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_notificacionesActionPerformed
+
+    private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
+        Administrar_horario2 ventana = new Administrar_horario2( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_inventarioActionPerformed
+
+    private void bt_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_consultarActionPerformed
+        consulta();
+    }//GEN-LAST:event_bt_consultarActionPerformed
+
+    private void bt_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpiarActionPerformed
+        lb_caracteristicas.setText("");
+        jLabel2.setText("");
+    }//GEN-LAST:event_bt_limpiarActionPerformed
+    //aqui se llenan el combobox de laboratorios
+    private ArrayList<Integer> llena_lab() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Id FROM Salones ");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Id"));
+            }
+        } catch (SQLException ex) {
+        }
+        return laboratorios;
+    }
+    private void llenar_laboratorios(){
+        ArrayList laboratorios = llena_lab();
+        try {
+            cb_laboratorios.removeAllItems();
+                 for (int i = 0; i <= laboratorios.size(); i++) {
+                cb_laboratorios.addItem(laboratorios.get(i).toString());
+            }
+        } catch (Exception ex) {
+        }
+    }
+    
+    //aqui se llenan el combobox de equipos
+    private ArrayList<Integer> llena_equ() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Id FROM Equipos WHERE Salon="+cb_laboratorios.getSelectedItem()+"´");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Id"));
+            }
+        } catch (SQLException ex) {
+        }
+        return laboratorios;
+    }
+    private void llenar_Equipos(){
+        ArrayList equipos = llena_equ();
+        try {
+            cb_equipoDeComputo.removeAllItems();
+                 for (int i = 0; i <= equipos.size(); i++) {
+                cb_equipoDeComputo.addItem(equipos.get(i).toString());
+            }
+        } catch (Exception ex) {
+        }
+    }
+    
+    //
+    private void consulta() {
+         try {
+            String Id="",Estado="",Teclado="",Mouse="",Monitor="",Procesador="",Almacenamiento="";
+            Connection connection = Base_datos.getConnection();
+            PreparedStatement ps;
+            ResultSet rs;
+            ps = connection.prepareStatement("SELECT * FROM Equipos");
+            rs = ps.executeQuery();
+            while(rs.next()){
+            Id=rs.getString("Id");
+            Estado=rs.getString("Estado");
+            Teclado=rs.getString("Teclado");
+            Mouse=rs.getString("Mouse");
+            Monitor=rs.getString("Monitor");
+            Procesador=rs.getString("Procesador");
+            Almacenamiento=rs.getString("Almacenamiento");
+            jLabel2.setText("Equipo: "+Id);
+            lb_caracteristicas.setText("<HTML>ESTADO DEL EQUIPO ACTUALMENTE: "+Estado+"<P>"+"Teclado: "+Teclado+"<P>"+"Mouse: "+Mouse+"<P>"+"Monitor: "+Monitor+"<P>"+"Procesador: "+Procesador+"<P>"+"Almacenamiento: "+Almacenamiento);
+            }
+        } catch (Exception ex) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -351,6 +517,7 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JToggleButton bt_administrar_Usuarios;
     private javax.swing.JToggleButton bt_consultar;
     private javax.swing.JToggleButton bt_inventario;
+    private javax.swing.JToggleButton bt_limpiar;
     private javax.swing.JToggleButton bt_notificaciones;
     private javax.swing.JToggleButton bt_reportes;
     private javax.swing.JToggleButton bt_rondines;
