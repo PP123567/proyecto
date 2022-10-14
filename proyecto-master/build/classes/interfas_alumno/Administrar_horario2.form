@@ -224,6 +224,9 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_notificacionesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="bt_inventario">
           <Properties>

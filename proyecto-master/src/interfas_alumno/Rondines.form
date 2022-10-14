@@ -235,6 +235,9 @@
             <Property name="text" type="java.lang.String" value="Notificaciones         "/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_notificacionesActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

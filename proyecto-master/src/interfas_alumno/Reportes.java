@@ -42,13 +42,7 @@ public class Reportes extends javax.swing.JFrame {
         lb_usuario = new javax.swing.JLabel();
         lb_nombreDelUsuario = new javax.swing.JLabel();
         lb_usuarioImg = new javax.swing.JLabel();
-        lb_administrarImg = new javax.swing.JLabel();
         lb_logoImg = new javax.swing.JLabel();
-        lb_administrarUsuarioImg = new javax.swing.JLabel();
-        lb_reportesimg = new javax.swing.JLabel();
-        lb_rondinesimg = new javax.swing.JLabel();
-        lb_notificacionesimg = new javax.swing.JLabel();
-        lb_invetaimg = new javax.swing.JLabel();
         bt_administrar_Horarios = new javax.swing.JToggleButton();
         bt_administrar_Usuarios = new javax.swing.JToggleButton();
         bt_rondines = new javax.swing.JToggleButton();
@@ -108,34 +102,8 @@ public class Reportes extends javax.swing.JFrame {
 
         pn_menuLateral.add(pn_rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 350, 160));
 
-        lb_administrarImg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_administrarImg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pn_menuLateral.add(lb_administrarImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 70, 40));
-
         lb_logoImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/isc350X140.png"))); // NOI18N
         pn_menuLateral.add(lb_logoImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 140));
-
-        lb_administrarUsuarioImg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_administrarUsuarioImg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_administrarUsuarioImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 70, 40));
-
-        lb_reportesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_reportesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_reportesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 70, 40));
-
-        lb_rondinesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_rondinesimg.setText(" ");
-        lb_rondinesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_rondinesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 70, 40));
-
-        lb_notificacionesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_notificacionesimg.setText(" ");
-        lb_notificacionesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_notificacionesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 70, 40));
-
-        lb_invetaimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_invetaimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_invetaimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 70, 40));
 
         bt_administrar_Horarios.setBackground(new java.awt.Color(255, 255, 255));
         bt_administrar_Horarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -254,7 +222,9 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_administrar_HorariosActionPerformed
 
     private void bt_administrar_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_UsuariosActionPerformed
-
+        Usuarios ventana = new Usuarios( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
@@ -264,7 +234,9 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_rondinesActionPerformed
 
     private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
-
+        Notificaciones ventana = new Notificaciones( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_notificacionesActionPerformed
 
     private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
@@ -324,14 +296,8 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JToggleButton bt_notificaciones;
     private javax.swing.JButton bt_reportes;
     private javax.swing.JToggleButton bt_rondines;
-    private javax.swing.JLabel lb_administrarImg;
-    private javax.swing.JLabel lb_administrarUsuarioImg;
-    private javax.swing.JLabel lb_invetaimg;
     private javax.swing.JLabel lb_logoImg;
     private javax.swing.JLabel lb_nombreDelUsuario;
-    private javax.swing.JLabel lb_notificacionesimg;
-    private javax.swing.JLabel lb_reportesimg;
-    private javax.swing.JLabel lb_rondinesimg;
     private javax.swing.JLabel lb_usuario;
     private javax.swing.JLabel lb_usuarioImg;
     private javax.swing.JPanel pn_menuLateral;

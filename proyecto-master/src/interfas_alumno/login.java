@@ -90,7 +90,7 @@ public class login extends javax.swing.JFrame {
         setExtendedState(2);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(23, 23, 23));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setForeground(new java.awt.Color(23, 23, 23));
 
         jPanel_elementos.setBackground(new java.awt.Color(27, 27, 27));

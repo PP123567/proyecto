@@ -402,6 +402,11 @@ public class Administrar_horario2 extends javax.swing.JFrame {
         bt_notificaciones.setText("Notificaciones       ");
         bt_notificaciones.setBorderPainted(false);
         bt_notificaciones.setContentAreaFilled(false);
+        bt_notificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_notificacionesActionPerformed(evt);
+            }
+        });
 
         bt_inventario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bt_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/inventario60X60.png"))); // NOI18N
@@ -2903,7 +2908,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrarUsuariosActionPerformed
-        Rondines ventana = new Rondines( );
+        Usuarios ventana = new Usuarios( );
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_administrarUsuariosActionPerformed
@@ -2921,7 +2926,10 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_administrarHorariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
-        // TODO add your handling code here:
+        Rondines  ventana = new Rondines( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+
     }//GEN-LAST:event_bt_rondinesActionPerformed
 
     private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
@@ -2929,6 +2937,12 @@ public class Administrar_horario2 extends javax.swing.JFrame {
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
+
+    private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
+        Notificaciones ventana = new Notificaciones( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_notificacionesActionPerformed
 
     /**
      * @param args the command line arguments

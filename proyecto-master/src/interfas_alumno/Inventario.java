@@ -46,13 +46,7 @@ public class Inventario extends javax.swing.JFrame {
         lb_usuario = new javax.swing.JLabel();
         lb_nombreDelUsuario = new javax.swing.JLabel();
         lb_usuarioImg = new javax.swing.JLabel();
-        lb_administrarImg = new javax.swing.JLabel();
         lb_logoImg = new javax.swing.JLabel();
-        lb_administrarUsuarioImg = new javax.swing.JLabel();
-        lb_reportesimg = new javax.swing.JLabel();
-        lb_rondinesimg = new javax.swing.JLabel();
-        lb_notificacionesimg = new javax.swing.JLabel();
-        lb_invetaimg = new javax.swing.JLabel();
         bt_administrar_Horarios = new javax.swing.JToggleButton();
         bt_administrar_Usuarios = new javax.swing.JToggleButton();
         bt_reportes = new javax.swing.JToggleButton();
@@ -124,34 +118,8 @@ public class Inventario extends javax.swing.JFrame {
 
         pn_menuLateral.add(pn_rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 350, 160));
 
-        lb_administrarImg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_administrarImg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pn_menuLateral.add(lb_administrarImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 70, 40));
-
         lb_logoImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/isc350X140.png"))); // NOI18N
         pn_menuLateral.add(lb_logoImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 140));
-
-        lb_administrarUsuarioImg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_administrarUsuarioImg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_administrarUsuarioImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 70, 40));
-
-        lb_reportesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_reportesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_reportesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 70, 40));
-
-        lb_rondinesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_rondinesimg.setText(" ");
-        lb_rondinesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_rondinesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 70, 40));
-
-        lb_notificacionesimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_notificacionesimg.setText(" ");
-        lb_notificacionesimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_notificacionesimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 70, 40));
-
-        lb_invetaimg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_invetaimg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pn_menuLateral.add(lb_invetaimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 70, 40));
 
         bt_administrar_Horarios.setBackground(new java.awt.Color(255, 255, 255));
         bt_administrar_Horarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -332,7 +300,7 @@ public class Inventario extends javax.swing.JFrame {
                                             .addComponent(lb_equipoDeComputo))))
                                 .addGap(123, 123, 123)
                                 .addComponent(pn_gris, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 99, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_principalLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -340,7 +308,7 @@ public class Inventario extends javax.swing.JFrame {
                                     .addComponent(bt_limpiar))
                                 .addGap(20, 20, 20))))
                     .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,7 +319,7 @@ public class Inventario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -370,7 +338,9 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_reportesActionPerformed
 
     private void bt_administrar_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_UsuariosActionPerformed
-        
+        Usuarios ventana = new Usuarios( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
@@ -380,14 +350,10 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_rondinesActionPerformed
 
     private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
-        
-    }//GEN-LAST:event_bt_notificacionesActionPerformed
-
-    private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
-        Inventario ventana = new Inventario( );
+        Notificaciones ventana = new Notificaciones( );
                 ventana.setVisible(true);
                 this.setVisible(false);
-    }//GEN-LAST:event_bt_inventarioActionPerformed
+    }//GEN-LAST:event_bt_notificacionesActionPerformed
 
     private void bt_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_consultarActionPerformed
         consulta();
@@ -397,6 +363,12 @@ public class Inventario extends javax.swing.JFrame {
         lb_caracteristicas.setText("");
         jLabel2.setText("");
     }//GEN-LAST:event_bt_limpiarActionPerformed
+
+    private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
+        Inventario ventana = new Inventario( );
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_inventarioActionPerformed
     //aqui se llenan el combobox de laboratorios
     private ArrayList<Integer> llena_lab() {
         Connection connection = Base_datos.getConnection();
@@ -521,20 +493,14 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_equipoDeComputo;
     private javax.swing.JComboBox<String> cb_laboratorios;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lb_administrarImg;
-    private javax.swing.JLabel lb_administrarUsuarioImg;
     private javax.swing.JLabel lb_caracteristicas;
     private javax.swing.JLabel lb_computadoraimg;
     private javax.swing.JLabel lb_equipoDeComputo;
     private javax.swing.JLabel lb_fondoimg;
     private javax.swing.JLabel lb_inventario;
-    private javax.swing.JLabel lb_invetaimg;
     private javax.swing.JLabel lb_laboratorios;
     private javax.swing.JLabel lb_logoImg;
     private javax.swing.JLabel lb_nombreDelUsuario;
-    private javax.swing.JLabel lb_notificacionesimg;
-    private javax.swing.JLabel lb_reportesimg;
-    private javax.swing.JLabel lb_rondinesimg;
     private javax.swing.JLabel lb_usuario;
     private javax.swing.JLabel lb_usuarioImg;
     private javax.swing.JPanel pn_gris;

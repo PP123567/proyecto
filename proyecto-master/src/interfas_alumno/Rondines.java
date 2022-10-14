@@ -138,6 +138,11 @@ public class Rondines extends javax.swing.JFrame {
         bt_notificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/correo60X60.png"))); // NOI18N
         bt_notificaciones.setText("Notificaciones         ");
         bt_notificaciones.setContentAreaFilled(false);
+        bt_notificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_notificacionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -260,7 +265,9 @@ public class Rondines extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administarUsuariosActionPerformed
-        // TODO add your handling code here:
+       Usuarios ventana = new Usuarios( );
+                ventana.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_bt_administarUsuariosActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
@@ -286,6 +293,12 @@ public class Rondines extends javax.swing.JFrame {
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
+
+    private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
+                Notificaciones ventana = new Notificaciones( );
+                ventana.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_bt_notificacionesActionPerformed
 
     /**
      * @param args the command line arguments

@@ -17,16 +17,13 @@ public class Notificaciones extends javax.swing.JFrame {
     public Notificaciones() {
         initComponents();
          this.setLocationRelativeTo(null);
-         rsscalelabel.RSScaleLabel.setScaleLabel(lb_usuarioImg,"src/img/administrador.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_logoImg,"src/img/isc.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_administrarImg,"src/img/calendario.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_administrarUsuarioImg,"src/img/grupo-de-usuarios.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_reportesimg,"src/img/reporte2.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_rondinesimg,"src/img/ronda.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lb_notificacionesimg,"src/img/correo.png");
-         rsscalelabel.RSScaleLabel.setScaleLabel(lb_invetaimg,"src/img/inventario.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(lb_computadoraimg,"src/img/Computadora_Inventario.png");  
-        rsscalelabel.RSScaleLabel.setScaleLabel(lb_fondoimg,"src/img/fondopc.png");     
+         rsscalelabel.RSScaleLabel.setScaleLabel(lb_invetaimg,"src/img/inventario.png");   
     }
 
     /**
@@ -52,8 +49,8 @@ public class Notificaciones extends javax.swing.JFrame {
         bt_reportes = new javax.swing.JToggleButton();
         bt_rondines = new javax.swing.JToggleButton();
         bt_notificaciones = new javax.swing.JToggleButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         lb_inventario = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,7 +98,7 @@ public class Notificaciones extends javax.swing.JFrame {
                 bt_administrar_HorariosActionPerformed(evt);
             }
         });
-        pn_menuLateral.add(bt_administrar_Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 350, 60));
+        pn_menuLateral.add(bt_administrar_Horarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 330, 60));
 
         bt_administrar_Usuarios.setBackground(new java.awt.Color(255, 255, 255));
         bt_administrar_Usuarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -141,11 +138,15 @@ public class Notificaciones extends javax.swing.JFrame {
         bt_notificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pn_menuLateral.add(bt_notificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 350, 60));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pn_menuLateral.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
-
         lb_inventario.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lb_inventario.setText("Notificaciones");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_principalLayout = new javax.swing.GroupLayout(pn_principal);
         pn_principal.setLayout(pn_principalLayout);
@@ -153,18 +154,25 @@ public class Notificaciones extends javax.swing.JFrame {
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_inventario)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addGroup(pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_principalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_inventario))
+                    .addGroup(pn_principalLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(749, Short.MAX_VALUE))
         );
         pn_principalLayout.setVerticalGroup(
             pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
             .addGroup(pn_principalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lb_inventario)
+                .addGap(123, 123, 123)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -178,7 +186,7 @@ public class Notificaciones extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pn_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -195,6 +203,10 @@ public class Notificaciones extends javax.swing.JFrame {
     private void bt_administrar_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_UsuariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
