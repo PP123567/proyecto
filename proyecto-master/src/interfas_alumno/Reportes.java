@@ -49,10 +49,22 @@ public class Reportes extends javax.swing.JFrame {
         bt_inventario = new javax.swing.JToggleButton();
         bt_notificaciones = new javax.swing.JToggleButton();
         bt_reportes = new javax.swing.JButton();
+        panelRound1 = new Clases.PanelRound();
+        bt_generarReporte = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pn_principal.setBackground(new java.awt.Color(255, 255, 255));
+        pn_principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pn_menuLateral.setBackground(new java.awt.Color(255, 255, 255));
         pn_menuLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,30 +198,87 @@ public class Reportes extends javax.swing.JFrame {
         });
         pn_menuLateral.add(bt_reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 360, 59));
 
-        javax.swing.GroupLayout pn_principalLayout = new javax.swing.GroupLayout(pn_principal);
-        pn_principal.setLayout(pn_principalLayout);
-        pn_principalLayout.setHorizontalGroup(
-            pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_principalLayout.createSequentialGroup()
-                .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1004, Short.MAX_VALUE))
+        pn_principal.add(pn_menuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 762));
+
+        panelRound1.setBackground(new java.awt.Color(107, 8, 48));
+        panelRound1.setRoundBottomLeft(50);
+        panelRound1.setRoundBottomRight(50);
+        panelRound1.setRoundTopLeft(50);
+        panelRound1.setRoundTopRight(50);
+
+        bt_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        bt_generarReporte.setForeground(new java.awt.Color(255, 255, 255));
+        bt_generarReporte.setText("generar reporte");
+        bt_generarReporte.setContentAreaFilled(false);
+        bt_generarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_generarReporteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_generarReporte)
+                .addGap(18, 18, 18))
         );
-        pn_principalLayout.setVerticalGroup(
-            pn_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_principalLayout.createSequentialGroup()
-                .addComponent(pn_menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bt_generarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
+
+        pn_principal.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 648, 233, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "alumnos", "salones", "profesores", "computadoras" }));
+        pn_principal.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pn_principal.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 512, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setText("Reportes");
+        pn_principal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 46, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Tipo:");
+        pn_principal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 431, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setText("jLabel2");
+        pn_principal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 431, 244, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setText("Fecha de inicio");
+        pn_principal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 141, -1, -1));
+
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_principal.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 238, 201, 56));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setText("Fecha de fin");
+        pn_principal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 141, -1, -1));
+
+        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pn_principal.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 201, 56));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1359, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pn_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 752, Short.MAX_VALUE)
         );
 
         pack();
@@ -250,6 +319,10 @@ public class Reportes extends javax.swing.JFrame {
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_reportesActionPerformed
+
+    private void bt_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_generarReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_generarReporteActionPerformed
     
     /**
      * @param args the command line arguments
@@ -292,14 +365,25 @@ public class Reportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bt_administrar_Horarios;
     private javax.swing.JToggleButton bt_administrar_Usuarios;
+    private javax.swing.JButton bt_generarReporte;
     private javax.swing.JToggleButton bt_inventario;
     private javax.swing.JToggleButton bt_notificaciones;
     private javax.swing.JButton bt_reportes;
     private javax.swing.JToggleButton bt_rondines;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lb_logoImg;
     private javax.swing.JLabel lb_nombreDelUsuario;
     private javax.swing.JLabel lb_usuario;
     private javax.swing.JLabel lb_usuarioImg;
+    private Clases.PanelRound panelRound1;
     private javax.swing.JPanel pn_menuLateral;
     private javax.swing.JPanel pn_principal;
     private javax.swing.JPanel pn_rojo;
