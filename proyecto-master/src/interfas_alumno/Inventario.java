@@ -209,7 +209,6 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Equipo: ");
         pn_gris.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 330, 30));
 
         lb_fondoimg.setBackground(new java.awt.Color(204, 204, 204));
@@ -219,10 +218,16 @@ public class Inventario extends javax.swing.JFrame {
         pn_gris.add(lb_computadoraimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 370, 270));
 
         lb_caracteristicas.setBackground(new java.awt.Color(204, 204, 204));
-        lb_caracteristicas.setText("La impresionante IdeaCentre 3 AIO es ideal tanto si necesitas trabajar en casa, como entretenerte; con su elegante soporte y base (pueden variar según el modelo), este todo en uno de 23.8” quedará genial en cualquier habitación y ahorrará un espacio muy necesario ");
+        lb_caracteristicas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_caracteristicas.setText(" ");
         pn_gris.add(lb_caracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 330, 210));
 
         cb_laboratorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_laboratorios.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_laboratoriosItemStateChanged(evt);
+            }
+        });
 
         lb_laboratorios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lb_laboratorios.setText("Laboratorio:");
@@ -369,6 +374,10 @@ public class Inventario extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
+
+    private void cb_laboratoriosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_laboratoriosItemStateChanged
+        llenar_Equipos();
+    }//GEN-LAST:event_cb_laboratoriosItemStateChanged
     //aqui se llenan el combobox de laboratorios
     private ArrayList<Integer> llena_lab() {
         Connection connection = Base_datos.getConnection();
@@ -404,7 +413,7 @@ public class Inventario extends javax.swing.JFrame {
         ArrayList  laboratorios =new ArrayList<>();
         try {
             stmt = connection.createStatement();
-            rs = stmt.executeQuery("SELECT Id FROM Equipos WHERE Salon="+cb_laboratorios.getSelectedItem()+"´");
+            rs = stmt.executeQuery("SELECT Id FROM Equipos WHERE Salon='"+cb_laboratorios.getSelectedItem()+"'");
             while (rs.next()) {
                 laboratorios.add(rs.getString("Id"));
             }
@@ -423,7 +432,7 @@ public class Inventario extends javax.swing.JFrame {
         }
     }
     
-    //
+    //esta es la funcion de el boton consultar manda a traer toda la informacion del equipo
     private void consulta() {
          try {
             String Id="",Estado="",Teclado="",Mouse="",Monitor="",Procesador="",Almacenamiento="";

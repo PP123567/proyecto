@@ -14,15 +14,8 @@ Color varchar(10)
 );
 
 CREATE TABLE Usuarios(
-Id varchar(15) PRIMARY KEY,
+Id int(10) PRIMARY KEY,
 TipoUsuario varchar(15),
-Nombre varchar(50),
-Contraseña varchar(20),
-Estado varchar(15)
-);
-
-CREATE TABLE Administradores(
-Id varchar(15) PRIMARY KEY,
 Nombre varchar(50),
 Contraseña varchar(20),
 Estado varchar(15)
@@ -37,14 +30,14 @@ VersionX varchar(10)
 CREATE TABLE Horarios(
 Id varchar(20) PRIMARY KEY,
 Salon varchar(10),
-Profesor varchar(15),
+Profesor int(11),
 Materia varchar(80),
 HoraInicio varchar(10),
 HoraFin varchar(10),
 Periodo varchar(30),
 Año int,
 Estado varchar(15),
-FOREIGN KEY  (Salones) REFERENCES Salones(Nombre),
+FOREIGN KEY  (Salon) REFERENCES Salones(Id),
 FOREIGN KEY  (Profesor) REFERENCES Usuarios(Id),
 FOREIGN KEY  (Materia) REFERENCES Materias(Nombre)
 );
@@ -52,21 +45,21 @@ FOREIGN KEY  (Materia) REFERENCES Materias(Nombre)
 CREATE TABLE Rondines(
 Id int  PRIMARY KEY AUTO_INCREMENT,
 Fecha datetime ,
-Administrador varchar(15),
+Administrador int(11),
 Salon varchar(10),
 Comentario varchar(350),
-FOREIGN KEY  (Administrador) REFERENCES Administradores(Id),
+FOREIGN KEY  (Administrador) REFERENCES Usuarios(Id),
 FOREIGN KEY  (Salon) REFERENCES Salones(Id)
 );
 
 CREATE TABLE Mensajes(
 Id int PRIMARY KEY AUTO_INCREMENT,
-Administrador varchar(15),
+Administrador int(11),
 Asunto varchar(50),
 Cuerpo varchar(200),
 TipoDeUsuarioAlQueSeDirige varchar(15),
 Estado varchar(15),
-FOREIGN KEY  (Administrador) REFERENCES Administradores(Id)
+FOREIGN KEY  (Administrador) REFERENCES Usuarios(Id)
 );
 
 CREATE TABLE Equipos(
@@ -78,15 +71,13 @@ Mouse varchar(40),
 Monitor varchar(40),
 Procesador varchar(40),
 Almacenamiento varchar(40),
-FOREIGN KEY  (Salones) REFERENCES Salones(Nombre)
+FOREIGN KEY  (Salon) REFERENCES Salones(Id)
 );
 
-
-/* Bajo este modelo el administrador no puede reportar observaciones, para hacerlo debemos incluir al admin dentro de la tabla de usuarios y no como una entidad (table) distinta */
 CREATE TABLE Observaciones(
 Id int PRIMARY KEY AUTO_INCREMENT,
 Fecha datetime ,
-Usuario varchar(15),
+Usuario int(11),
 Equipo varchar(8),
 Comentario varchar(200),
 Estado varchar(15),
@@ -94,8 +85,65 @@ FOREIGN KEY  (Usuario) REFERENCES Usuarios(Id),
 FOREIGN KEY  (Equipo) REFERENCES Equipos(Id)
 );
 
-CREATE TABLE SoftwarePorEquipo(
+/*CREATE TABLE SoftwarePorEquipo(
 Equipo varchar(8) FOREIGN KEY REFERENCES Equipos(Id),
 Software int FOREIGN KEY REFERENCES Software(Id)
+);*/
 
-);
+/*De aqui en adelante insertamos los datos*/
+
+INSERT INTO Salones (Id,Estado) 
+values 
+('LAS','Activo'),
+('LDM','Activo'),
+('LDS','Activo'),
+('LPG','Activo'),
+('LSO','Activo')
+;
+
+INSERT INTO Materias (Nombre, Color) values ('Progamacion', 'Negro');
+
+INSERT INTO Usuarios (Id, TipoUsuario, Nombre, Contraseña, Estado) 
+values
+ ('2030178', 'Administrador', 'MICHEL', '12345', 'Activo'),
+ ('2034230', 'Docente', 'adrian', '12345', 'Activo'),
+ ('2034107', 'Estudiante', 'The Motherfucker', '12345', 'Activo')
+ ;
+
+INSERT INTO Software (Id, Nombre, VersionX) values ('374743', 'Mr Robot', 'Windows 10');
+
+INSERT INTO Horarios (Id, Salon, Profesor, Materia, HorarioInicio, HoraFin, Periodo, Año, Estado) values ('Krillin', 'LAS', 'Charles', 'Metaverso', '07:00', '08:00', 'Enero - Abril', '2022', 'Activo');
+
+INSERT INTO Rondines (Id, Fecha, Administrador, Salon, Comentario) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS', 'Los dispositivos se encuentran funcionando');
+
+INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) values ('374743', '2030178', 'Maquina', 'La maquina no funciona', 'Administrador', 'Inactivo');
+
+INSERT INTO Equipos (Id, Salon, Estado, Teclado, Mouse, Monitor, Procesador, Almacenamiento) 
+values 
+('LAS-PC1', 'LAS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LAS-PC2', 'LAS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LAS-PC3', 'LAS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LAS-PC4', 'LAS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LAS-PC5', 'LAS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro')
+;
+INSERT INTO Equipos (Id, Salon, Estado, Teclado, Mouse, Monitor, Procesador, Almacenamiento) 
+values 
+('LDM-PC1', 'LDM', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDM-PC2', 'LDM', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDM-PC3', 'LDM', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDM-PC4', 'LDM', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDM-PC5', 'LDM', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro')
+;
+INSERT INTO Equipos (Id, Salon, Estado, Teclado, Mouse, Monitor, Procesador, Almacenamiento) 
+values 
+('LDS-PC1', 'LDS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDS-PC2', 'LDS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDS-PC3', 'LDS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDS-PC4', 'LDS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro'),
+('LDS-PC5', 'LDS', 'Activo', 'Razer BlackWidow V3', 'Razer', 'Alienware 17', 'i5 9300h', 'Samsung 980 Pro')
+;
+
+INSERT INTO Observaciones (Id, Fecha, Usuario, Equipo, Comentario, Estado) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS-PC1', 'Equipo funcional', 'Activo');
+
+SELECT *FROM Equipos;
+SELECT Id FROM Equipos WHERE Salon='LAS'
