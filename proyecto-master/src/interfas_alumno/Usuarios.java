@@ -36,11 +36,6 @@ public class Usuarios extends javax.swing.JFrame {
         initComponents();
         Connect();
         this.setLocationRelativeTo(this);
-        SetImageLabel(lb_Guardar,"src/img/save.png");
-        SetImageLabel(lb_Cont,"src/img/rest.png");
-        SetImageLabel(lb_Elim,"src/img/exc.png");
-        SetImageLabel(lb_Exc1,"src/img/exc.png");
-        SetImageLabel(lb_Elim,"src/img/eliminar.png");
     }
    
     Connection con;
@@ -68,17 +63,12 @@ public class Usuarios extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lb_log = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         bttnGuardar = new javax.swing.JButton();
         bttnElim = new javax.swing.JButton();
-        lb_Guardar = new javax.swing.JLabel();
         bttnRest = new javax.swing.JButton();
-        lb_Cont = new javax.swing.JLabel();
-        lb_Elim = new javax.swing.JLabel();
         bttnExc = new javax.swing.JButton();
-        lb_Exc1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -93,7 +83,6 @@ public class Usuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,9 +90,6 @@ public class Usuarios extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(244, 244, 244));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("jLabel1");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 115, 30, 30));
 
         lb_log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/isc350X140.png"))); // NOI18N
         jPanel3.add(lb_log, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 140));
@@ -124,43 +110,45 @@ public class Usuarios extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 300, -1));
 
-        bttnGuardar.setText("Guardar usuario");
+        bttnGuardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bttnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save.png"))); // NOI18N
+        bttnGuardar.setText("Guardar usuario             ");
         bttnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnGuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(bttnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 160, -1));
+        jPanel3.add(bttnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, -1));
 
-        bttnElim.setText("Eliminar registro");
+        bttnElim.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bttnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        bttnElim.setText("Eliminar registro            ");
         bttnElim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnElimActionPerformed(evt);
             }
         });
-        jPanel3.add(bttnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 150, -1));
+        jPanel3.add(bttnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 300, -1));
 
-        lb_Guardar.setText("jLabel3");
-        jPanel3.add(lb_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 50, 50));
-
+        bttnRest.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bttnRest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rest.png"))); // NOI18N
         bttnRest.setText("Restablecer Contraseña");
         bttnRest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnRestActionPerformed(evt);
             }
         });
-        jPanel3.add(bttnRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
-        jPanel3.add(lb_Cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 50, 40));
-        jPanel3.add(lb_Elim, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 50, 40));
+        jPanel3.add(bttnRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 300, -1));
 
-        bttnExc.setText("Cargar Excel");
+        bttnExc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bttnExc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exc.png"))); // NOI18N
+        bttnExc.setText("Cargar Excel                ");
         bttnExc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnExcActionPerformed(evt);
             }
         });
-        jPanel3.add(bttnExc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 150, -1));
-        jPanel3.add(lb_Exc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 50, 40));
+        jPanel3.add(bttnExc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 300, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Administrar Usuarios");
@@ -202,17 +190,18 @@ public class Usuarios extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(46, 46, 46)
-                                .addComponent(txtUser))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(39, 39, 39)
-                                .addComponent(txtMat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(txtUser))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(39, 39, 39)
+                                    .addComponent(txtMat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,6 +228,7 @@ public class Usuarios extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(101, 0, 11));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario:");
 
@@ -260,7 +250,7 @@ public class Usuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lb_Adm, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addGap(63, 63, 63))
         );
         jPanel1Layout.setVerticalGroup(
@@ -418,7 +408,6 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JButton bttnExc;
     private javax.swing.JButton bttnGuardar;
     private javax.swing.JButton bttnRest;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -431,10 +420,6 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_Adm;
-    private javax.swing.JLabel lb_Cont;
-    private javax.swing.JLabel lb_Elim;
-    private javax.swing.JLabel lb_Exc1;
-    private javax.swing.JLabel lb_Guardar;
     private javax.swing.JLabel lb_log;
     private javax.swing.JTextField txtMat;
     private javax.swing.JTextField txtUser;

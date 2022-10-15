@@ -83,23 +83,23 @@ public class Reservar_salon extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(107, 8, 48));
 
-        jLabel3.setText("Hola putines");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profesor.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
+                .addComponent(jLabel3)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(244, 244, 244));

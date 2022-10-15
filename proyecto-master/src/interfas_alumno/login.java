@@ -48,9 +48,15 @@ public class login extends javax.swing.JFrame {
             }
             if (usuario1.equals(usuario)) {
                 if (contraseña1.equals(contraseña)) {
-                Reservar_salon ventana = new Reservar_salon( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+                    if (tipo.equals("Administrador")) {
+                    Administrar_horario2 ventana = new Administrar_horario2( );
+                    ventana.setVisible(true);
+                    this.setVisible(false); 
+                    }else{
+                    Reservar_salon ventana = new Reservar_salon( );
+                    ventana.setVisible(true);
+                    this.setVisible(false);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "contraseña Incorecta","ERROR",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/contrasena-incorrecta.png"));
                 }
@@ -81,19 +87,20 @@ public class login extends javax.swing.JFrame {
         jLabel_contraseña = new javax.swing.JLabel();
         CheckBox_mostrarContraseña = new javax.swing.JCheckBox();
         jLabel_candadoImagen = new javax.swing.JLabel();
-        jpanel_imagenes = new javax.swing.JPanel();
         jLabel_iscImagen = new javax.swing.JLabel();
-        jLabel_logoImagen = new javax.swing.JLabel();
         jLabel_principalImagen = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setForeground(new java.awt.Color(23, 23, 23));
 
-        jPanel_elementos.setBackground(new java.awt.Color(27, 27, 27));
+        jPanel_elementos.setBackground(new java.awt.Color(101, 0, 11));
 
         btn_ingreso.setBackground(new java.awt.Color(101, 0, 11));
         btn_ingreso.setFont(new java.awt.Font("Century Schoolbook", 0, 15)); // NOI18N
@@ -151,7 +158,7 @@ public class login extends javax.swing.JFrame {
         jLabel_contraseña.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_contraseña.setText("CONTRASEÑA:");
 
-        CheckBox_mostrarContraseña.setBackground(new java.awt.Color(27, 27, 27));
+        CheckBox_mostrarContraseña.setBackground(new java.awt.Color(101, 0, 11));
         CheckBox_mostrarContraseña.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         CheckBox_mostrarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         CheckBox_mostrarContraseña.setText("MOSTRAR");
@@ -179,13 +186,13 @@ public class login extends javax.swing.JFrame {
                                 .addComponent(txtfid_contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                                 .addComponent(TextField_usuario))))
                     .addGroup(jPanel_elementosLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(btn_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_elementosLayout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addGroup(jPanel_elementosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel_candadoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlabel_acceso))))
+                            .addComponent(jlabel_acceso)))
+                    .addGroup(jPanel_elementosLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btn_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel_elementosLayout.setVerticalGroup(
@@ -195,7 +202,7 @@ public class login extends javax.swing.JFrame {
                 .addComponent(jlabel_acceso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_candadoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jLabel_usuario)
                 .addGap(18, 18, 18)
                 .addComponent(TextField_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,40 +212,55 @@ public class login extends javax.swing.JFrame {
                 .addComponent(txtfid_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CheckBox_mostrarContraseña)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(btn_ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(40, 40, 40))
         );
 
-        jpanel_imagenes.setBackground(new java.awt.Color(27, 27, 27));
-        jpanel_imagenes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jLabel_iscImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/isc100X50.png"))); // NOI18N
-        jpanel_imagenes.add(jLabel_iscImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 50));
 
-        jLabel_logoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-        jpanel_imagenes.add(jLabel_logoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 270, 110));
-        jpanel_imagenes.add(jLabel_principalImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 370));
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrarinicio.png"))); // NOI18N
+        jToggleButton1.setBorderPainted(false);
+        jToggleButton1.setContentAreaFilled(false);
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jpanel_imagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addComponent(jPanel_elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
+                .addGap(117, 117, 117)
+                .addComponent(jLabel_principalImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel_iscImagen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_elementos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpanel_imagenes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel_iscImagen)))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel_principalImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel_elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,6 +332,10 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfid_contraseñaActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,13 +378,12 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_candadoImagen;
     private javax.swing.JLabel jLabel_contraseña;
     private javax.swing.JLabel jLabel_iscImagen;
-    private javax.swing.JLabel jLabel_logoImagen;
     private javax.swing.JLabel jLabel_principalImagen;
     private javax.swing.JLabel jLabel_usuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_elementos;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel jlabel_acceso;
-    private javax.swing.JPanel jpanel_imagenes;
     private javax.swing.JPasswordField txtfid_contraseña;
     // End of variables declaration//GEN-END:variables
 
