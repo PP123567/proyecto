@@ -5,6 +5,7 @@
  */
 package interfas_alumno;
 
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,8 +17,15 @@ public class Reservar_salon extends javax.swing.JFrame {
     /**
      * Creates new form Administrar_horario
      */
-    public Reservar_salon() {
+    public Reservar_salon(final String tipo,String nom) {
         initComponents();
+        mensaje ventana = new mensaje(tipo);
+        ventana.setVisible(true);
+        if(tipo.equals("Docente")){
+            
+        }else{
+            bt_registrarClase.setVisible(false);
+        }
     }
 
     /**
@@ -30,7 +38,7 @@ public class Reservar_salon extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_usuario = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lb_imgPC1 = new javax.swing.JLabel();
         lb_imgPC4 = new javax.swing.JLabel();
@@ -83,7 +91,7 @@ public class Reservar_salon extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(107, 8, 48));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profesor.png"))); // NOI18N
+        lb_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profesor.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,14 +99,14 @@ public class Reservar_salon extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(lb_usuario)
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lb_usuario)
                 .addContainerGap())
         );
 
@@ -188,7 +196,7 @@ public class Reservar_salon extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(bt_registrarClase)
                 .addContainerGap())
         );
@@ -324,7 +332,7 @@ public class Reservar_salon extends javax.swing.JFrame {
                     .addComponent(lb_imgPC29, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_imgPC31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_imgPC32, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -496,45 +504,11 @@ public class Reservar_salon extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reservar_salon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reservar_salon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reservar_salon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reservar_salon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Reservar_salon().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_registrarClase;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -576,6 +550,7 @@ public class Reservar_salon extends javax.swing.JFrame {
     private javax.swing.JLabel lb_imgPC7;
     private javax.swing.JLabel lb_imgPC8;
     private javax.swing.JLabel lb_imgPC9;
+    private javax.swing.JLabel lb_usuario;
     private javax.swing.JPanel pn_LAS;
     private javax.swing.JPanel pn_LDM;
     private javax.swing.JPanel pn_LDS;

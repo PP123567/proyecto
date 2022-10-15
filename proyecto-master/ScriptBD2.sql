@@ -116,7 +116,12 @@ INSERT INTO Horarios (Id, Salon, Profesor, Materia, HorarioInicio, HoraFin, Peri
 
 INSERT INTO Rondines (Id, Fecha, Administrador, Salon, Comentario) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS', 'Los dispositivos se encuentran funcionando');
 
-INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) values ('374743', '2030178', 'Maquina', 'La maquina no funciona', 'Administrador', 'Inactivo');
+INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) 
+values
+ ('374744', '2030178', 'Maquina', 'La maquina no funciona', 'Administrador', 'Inactivo'),
+ ('374745', '2030178', 'Maquina', 'La maquina no funciona', 'Docente', 'Inactivo'),
+ ('374746', '2030178', 'Maquina', 'La maquina no funciona', 'Estudiante', 'Inactivo')
+ ;
 
 INSERT INTO Equipos (Id, Salon, Estado, Teclado, Mouse, Monitor, Procesador, Almacenamiento) 
 values 
@@ -145,5 +150,6 @@ values
 
 INSERT INTO Observaciones (Id, Fecha, Usuario, Equipo, Comentario, Estado) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS-PC1', 'Equipo funcional', 'Activo');
 
-SELECT *FROM Equipos;
+SELECT *FROM usuarios;
 SELECT Id FROM Equipos WHERE Salon='LAS'
+

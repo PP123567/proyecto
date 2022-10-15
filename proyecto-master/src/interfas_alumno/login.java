@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author liooficial
  */
+
 public class login extends javax.swing.JFrame {
 
     /**
@@ -28,24 +29,24 @@ public class login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel_principalImagen,"src/img/lab.jpg");
-        
     }
+    public static String usuario1="";
     private void verificar() {
        String usuario= TextField_usuario.getText();
        String contraseña=txtfid_contraseña.getText();
         try {
             String usuario1="",contraseña1="",tipo="",nom="";
+            boolean econtar=true;
             Connection connection = Base_datos.getConnection();
             PreparedStatement ps;
             ResultSet rs;
             ps = connection.prepareStatement("SELECT * FROM Usuarios");
             rs = ps.executeQuery();
-            while(rs.next()){
+            while(rs.next()){ 
             usuario1=rs.getString("Id");
             contraseña1=rs.getString("Contraseña");
             tipo=rs.getString("TipoUsuario");
             nom=rs.getString("Nombre");
-            }
             if (usuario1.equals(usuario)) {
                 if (contraseña1.equals(contraseña)) {
                     if (tipo.equals("Administrador")) {
@@ -53,16 +54,20 @@ public class login extends javax.swing.JFrame {
                     ventana.setVisible(true);
                     this.setVisible(false); 
                     }else{
-                    Reservar_salon ventana = new Reservar_salon( );
+                    Reservar_salon ventana = new Reservar_salon(tipo,nom);
                     ventana.setVisible(true);
                     this.setVisible(false);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "contraseña Incorecta","ERROR",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/contrasena-incorrecta.png"));
                 }
-            } else {
+                econtar=false;
+                break;
+            }
+            }
+            if(econtar == true) {
                 JOptionPane.showMessageDialog(null, "El Usuario No Existe","ERROR",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/desconocido.png"));
-            } 
+            }  
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
             JOptionPane.showMessageDialog(null, ex.toString());
@@ -231,7 +236,6 @@ public class login extends javax.swing.JFrame {
         );
 
         jLabel_principalImagen.setBackground(new java.awt.Color(255, 153, 102));
-        jLabel_principalImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -241,12 +245,10 @@ public class login extends javax.swing.JFrame {
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel_iscImagen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel_iscImagen))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(178, 178, 178)
-                        .addComponent(jPanel_elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel_elementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(98, 98, 98)
                 .addComponent(jLabel_principalImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
