@@ -5,7 +5,11 @@
  */
 package interfas_alumno;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,12 +23,12 @@ public class Reservar_salon extends javax.swing.JFrame {
      */
     public Reservar_salon(final String tipo,String nom) {
         initComponents();
-        mensaje ventana = new mensaje(tipo);
-        ventana.setVisible(true);
+        verificar(tipo);
         if(tipo.equals("Docente")){
-            
+        rsscalelabel.RSScaleLabel.setScaleLabel(lb_usuario,"src/img/profesor.png");
         }else{
-            bt_registrarClase.setVisible(false);
+        bt_registrarClase.setVisible(false);
+        rsscalelabel.RSScaleLabel.setScaleLabel(lb_usuario,"src/img/estudiante.png");
         }
     }
 
@@ -91,7 +95,7 @@ public class Reservar_salon extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(107, 8, 48));
 
-        lb_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profesor.png"))); // NOI18N
+        lb_usuario.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,14 +103,14 @@ public class Reservar_salon extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lb_usuario)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addComponent(lb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lb_usuario)
+                .addComponent(lb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -282,7 +286,7 @@ public class Reservar_salon extends javax.swing.JFrame {
                             .addComponent(lb_imgPC32, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(51, 51, 51))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(233, 233, 233))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -500,7 +504,29 @@ public class Reservar_salon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void verificar(String tipo) {
+        try {
+            String asunto="";
+            Connection connection = Base_datos.getConnection();
+            PreparedStatement ps;
+            ResultSet rs;
+            ps = connection.prepareStatement("SELECT Asunto,Cuerpo FROM Mensajes where TipoDeUsuarioAlQueSeDirige='"+tipo+"'");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                asunto=rs.getString("Asunto");
+            }
+            if(!"".equals(asunto)){
+            mensaje ventana = new mensaje(tipo);
+            ventana.setVisible(true);
+            this.setVisible(false);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }       
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
