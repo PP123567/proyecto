@@ -23,10 +23,11 @@ public class Inventario extends javax.swing.JFrame {
     /**
      * Creates new form Inventario
      */
-    public Inventario() {
+    public Inventario(final String nom) {
         initComponents();
-         llenar_laboratorios();
-         llenar_Equipos();
+        lb_nombreDelUsuario.setText(nom);
+        llenar_laboratorios();
+        llenar_Equipos();
         rsscalelabel.RSScaleLabel.setScaleLabel(lb_computadoraimg,"src/img/Computadora_Inventario.png");  
         rsscalelabel.RSScaleLabel.setScaleLabel(lb_fondoimg,"src/img/fondopc.png");     
     }
@@ -331,13 +332,13 @@ public class Inventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administrar_HorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_HorariosActionPerformed
-        Administrar_horario2 ventana = new Administrar_horario2( );
+        Administrar_horario2 ventana = new Administrar_horario2( lb_nombreDelUsuario.getText());
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_HorariosActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
-        Reportes ventana = new Reportes( );
+        Reportes ventana = new Reportes( lb_nombreDelUsuario.getText());
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_reportesActionPerformed
@@ -349,7 +350,7 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
-       Rondines ventana = new Rondines( );
+       Rondines ventana = new Rondines( lb_nombreDelUsuario.getText());
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_rondinesActionPerformed
@@ -370,7 +371,7 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_limpiarActionPerformed
 
     private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
-        Inventario ventana = new Inventario( );
+        Inventario ventana = new Inventario( lb_nombreDelUsuario.getText());
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
@@ -439,7 +440,7 @@ public class Inventario extends javax.swing.JFrame {
             Connection connection = Base_datos.getConnection();
             PreparedStatement ps;
             ResultSet rs;
-            ps = connection.prepareStatement("SELECT * FROM Equipos");
+            ps = connection.prepareStatement("SELECT * FROM Equipos WHERE Salon='"+cb_laboratorios.getSelectedItem()+"' AND Id='"+cb_equipoDeComputo.getSelectedItem()+"'");
             rs = ps.executeQuery();
             while(rs.next()){
             Id=rs.getString("Id");
@@ -458,37 +459,7 @@ public class Inventario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Inventario().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bt_administrar_Horarios;

@@ -44,7 +44,7 @@ FOREIGN KEY  (Materia) REFERENCES Materias(Nombre)
 
 CREATE TABLE Rondines(
 Id int  PRIMARY KEY AUTO_INCREMENT,
-Fecha datetime ,
+Fecha datetime default CURRENT_TIMESTAMP,
 Administrador int(11),
 Salon varchar(10),
 Comentario varchar(350),
@@ -114,7 +114,7 @@ INSERT INTO Software (Id, Nombre, VersionX) values ('374743', 'Mr Robot', 'Windo
 
 INSERT INTO Horarios (Id, Salon, Profesor, Materia, HorarioInicio, HoraFin, Periodo, Año, Estado) values ('Krillin', 'LAS', 'Charles', 'Metaverso', '07:00', '08:00', 'Enero - Abril', '2022', 'Activo');
 
-INSERT INTO Rondines (Id, Fecha, Administrador, Salon, Comentario) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS', 'Los dispositivos se encuentran funcionando');
+INSERT INTO Rondines (Id, Administrador, Salon, Comentario) values ('3747448', '2030178', 'LAS', 'Los dispositivos se encuentran funcionando');
 
 INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) 
 values
@@ -150,6 +150,11 @@ values
 
 INSERT INTO Observaciones (Id, Fecha, Usuario, Equipo, Comentario, Estado) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS-PC1', 'Equipo funcional', 'Activo');
 
-SELECT *FROM usuarios;
+SELECT *FROM Usuarios;
+truncate table  Mensajes;
+INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) 
+values
+ ('374745', '2030178', 'Maquina', 'La maquina no funciona', 'Docente', 'Inactivo')
+ ;
 SELECT Id FROM Equipos WHERE Salon='LAS'
 

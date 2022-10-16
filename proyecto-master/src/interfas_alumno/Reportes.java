@@ -6,13 +6,10 @@
 package interfas_alumno;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,8 +20,10 @@ public class Reportes extends javax.swing.JFrame {
     /**
      * Creates new form Inventario
      */
-    public Reportes() {
+    public Reportes(final String nom) {
         initComponents(); 
+        lb_nombreDelUsuario.setText(nom);
+        llenar((String) cb_tipo.getSelectedItem());
     }
 
     /**
@@ -51,15 +50,15 @@ public class Reportes extends javax.swing.JFrame {
         bt_reportes = new javax.swing.JButton();
         panelRound1 = new Clases.PanelRound();
         bt_generarReporte = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_tipo = new javax.swing.JComboBox<>();
+        cb_tipoc = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lb_extra = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        date_inicio = new com.toedter.calendar.JDateChooser();
+        date_fin = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,13 +234,18 @@ public class Reportes extends javax.swing.JFrame {
 
         pn_principal.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 648, 233, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "alumnos", "salones", "profesores", "computadoras" }));
-        pn_principal.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+        cb_tipo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumnos", "Salones", "Profesores", "Equipo" }));
+        cb_tipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoItemStateChanged(evt);
+            }
+        });
+        pn_principal.add(cb_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pn_principal.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 512, -1, -1));
+        cb_tipoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cb_tipoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pn_principal.add(cb_tipoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 512, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Reportes");
@@ -251,24 +255,25 @@ public class Reportes extends javax.swing.JFrame {
         jLabel2.setText("Tipo:");
         pn_principal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 431, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setText("jLabel2");
-        pn_principal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 431, 244, -1));
+        lb_extra.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lb_extra.setText("jLabel2");
+        pn_principal.add(lb_extra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 431, 290, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Fecha de inicio");
         pn_principal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 141, -1, -1));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        pn_principal.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 238, 201, 56));
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Fecha de fin");
         pn_principal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 141, -1, -1));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        pn_principal.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 201, 56));
+        date_inicio.setBackground(new java.awt.Color(255, 255, 255));
+        date_inicio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pn_principal.add(date_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 201, 56));
+
+        date_fin.setBackground(new java.awt.Color(255, 255, 255));
+        date_fin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pn_principal.add(date_fin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 240, 201, 56));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,82 +290,192 @@ public class Reportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_administrar_HorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_HorariosActionPerformed
-        Administrar_horario2 ventana = new Administrar_horario2( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        Administrar_horario2 ventana = new Administrar_horario2(lb_nombreDelUsuario.getText() );
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_HorariosActionPerformed
 
     private void bt_administrar_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrar_UsuariosActionPerformed
         Usuarios ventana = new Usuarios( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_administrar_UsuariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
-       Rondines ventana = new Rondines( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        Rondines ventana = new Rondines(lb_nombreDelUsuario.getText() );
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_rondinesActionPerformed
 
     private void bt_notificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_notificacionesActionPerformed
         Notificaciones ventana = new Notificaciones( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_notificacionesActionPerformed
 
     private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
-        Inventario ventana = new Inventario( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        Inventario ventana = new Inventario(lb_nombreDelUsuario.getText());
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
-        Reportes ventana = new Reportes( );
-                ventana.setVisible(true);
-                this.setVisible(false);
+        Reportes ventana = new Reportes(lb_nombreDelUsuario.getText() );
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_reportesActionPerformed
 
     private void bt_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_generarReporteActionPerformed
-        // TODO add your handling code here:
+        
+        cb_tipo.getSelectedItem();
+        cb_tipoc.getSelectedItem();
     }//GEN-LAST:event_bt_generarReporteActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Reportes().setVisible(true);
+    private void cb_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoItemStateChanged
+        llenar((String) cb_tipo.getSelectedItem());
+    }//GEN-LAST:event_cb_tipoItemStateChanged
+    
+    
+    
+    //aqui se llenan el combobox de tipo equipo
+    private ArrayList<Integer> llena_equ() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Id FROM Equipos");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Id"));
             }
-        });
+        } catch (SQLException ex) {
+            
+        }
+        return laboratorios;
     }
+    private void llenar_Equipos(){
+        ArrayList equipos = llena_equ();
+        try {
+            cb_tipoc.removeAllItems();
+                 for (int i = 0; i <= equipos.size(); i++) {
+                cb_tipoc.addItem(equipos.get(i).toString());
+            }
+        } catch (Exception ex) {
+          
+        }
+    }
+    
+    //aqui se llenan el combobox de tipo equipo
+    private ArrayList<Integer> llena_alum() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Nombre FROM Usuarios WHERE TipoUsuario='Estudiante'");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Nombre"));
+            }
+        } catch (SQLException ex) {
+           
+        }
+        return laboratorios;
+    }
+    private void llenar_Alumnos(){
+        ArrayList equipos = llena_alum();
+        try {
+            cb_tipoc.removeAllItems();
+                 for (int i = 0; i <= equipos.size(); i++) {
+                cb_tipoc.addItem(equipos.get(i).toString());
+            }
+        } catch (Exception ex) {
+           
+        }
+    }
+    //aqui se llenan el combobox de tipo salones
+    private ArrayList<Integer> llena_Salone() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Id FROM Salones");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Id"));
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return laboratorios;
+    }
+    private void llenar_Salones(){
+        ArrayList equipos = llena_Salone();
+        try {
+            cb_tipoc.removeAllItems();
+                 for (int i = 0; i <= equipos.size(); i++) {
+                cb_tipoc.addItem(equipos.get(i).toString());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
+    //aqui se llenan el combobox de tipo equipo
+    private ArrayList<Integer> llena_Profesore() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  laboratorios =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Nombre FROM Usuarios WHERE TipoUsuario='Docente'");
+            while (rs.next()) {
+                laboratorios.add(rs.getString("Nombre"));
+            }
+        } catch (SQLException ex) {
+           
+        }
+        return laboratorios;
+    }
+    private void llenar_Profesores(){
+        ArrayList equipos = llena_Profesore();
+        try {
+            cb_tipoc.removeAllItems();
+                 for (int i = 0; i <= equipos.size(); i++) {
+                cb_tipoc.addItem(equipos.get(i).toString());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
+    
+    
+    
+    
+    
+    private void llenar(String c){
+    switch (c) { 
+    case "Alumnos":
+     lb_extra.setText("Seleciona el Alumnos:");
+     llenar_Alumnos();
+     break;
+    case "Salones":
+     lb_extra.setText("Seleciona el Salones:");
+     llenar_Salones();
+     break;
+    case "Profesores":
+     lb_extra.setText("Seleciona al Profesores:");
+     llenar_Profesores();
+     break;
+     case "Equipo": 
+     lb_extra.setText("Seleciona el equipo:");
+     llenar_Equipos( );
+     break;
+    }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bt_administrar_Horarios;
@@ -370,15 +485,15 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JToggleButton bt_notificaciones;
     private javax.swing.JButton bt_reportes;
     private javax.swing.JToggleButton bt_rondines;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> cb_tipo;
+    private javax.swing.JComboBox<String> cb_tipoc;
+    private com.toedter.calendar.JDateChooser date_fin;
+    private com.toedter.calendar.JDateChooser date_inicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lb_extra;
     private javax.swing.JLabel lb_logoImg;
     private javax.swing.JLabel lb_nombreDelUsuario;
     private javax.swing.JLabel lb_usuario;

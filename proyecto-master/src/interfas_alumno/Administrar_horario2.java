@@ -16,11 +16,11 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     /**
      * Creates new form Administrar_horario
      */
-    public Administrar_horario2() {
+    public Administrar_horario2(final String nom) {
         initComponents();
+        lb_usuario.setText(nom);
         cargarHoras();
     }
-    
     public void cargarHoras() {
         DefaultTableModel dtm = new DefaultTableModel();
         String[] horario = new String[14];
@@ -62,6 +62,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lb_usuario = new javax.swing.JLabel();
         bt_administrarHorarios = new javax.swing.JToggleButton();
         bt_administrarUsuarios = new javax.swing.JToggleButton();
         bt_reportes = new javax.swing.JToggleButton();
@@ -333,6 +334,10 @@ public class Administrar_horario2 extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("usuario:");
 
+        lb_usuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lb_usuario.setForeground(new java.awt.Color(255, 255, 255));
+        lb_usuario.setText("usuario:");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -341,7 +346,9 @@ public class Administrar_horario2 extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lb_usuario, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(38, 38, 38))
         );
         jPanel6Layout.setVerticalGroup(
@@ -349,9 +356,12 @@ public class Administrar_horario2 extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(48, 48, 48)
+                        .addComponent(lb_usuario)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         bt_administrarHorarios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -2914,26 +2924,26 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_administrarUsuariosActionPerformed
 
     private void bt_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reportesActionPerformed
-        Reportes ventana = new Reportes( );
+        Reportes ventana = new Reportes(lb_usuario.getText() );
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_reportesActionPerformed
 
     private void bt_administrarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_administrarHorariosActionPerformed
-        Administrar_horario2 ventana = new Administrar_horario2( );
+        Administrar_horario2 ventana = new Administrar_horario2(lb_usuario.getText() );
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_administrarHorariosActionPerformed
 
     private void bt_rondinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rondinesActionPerformed
-        Rondines  ventana = new Rondines( );
+        Rondines  ventana = new Rondines( lb_usuario.getText());
                 ventana.setVisible(true);
                 this.setVisible(false);
 
     }//GEN-LAST:event_bt_rondinesActionPerformed
 
     private void bt_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inventarioActionPerformed
-        Inventario ventana = new Inventario( );
+        Inventario ventana = new Inventario(lb_usuario.getText() );
                 ventana.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_bt_inventarioActionPerformed
@@ -2947,40 +2957,6 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Administrar_horario2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Administrar_horario2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Administrar_horario2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Administrar_horario2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Administrar_horario2().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bt_administrarHorarios;
@@ -3146,6 +3122,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     private javax.swing.JLabel lb_miercoles20Materia;
     private javax.swing.JLabel lb_miercoles20Profesor;
     private javax.swing.JLabel lb_profesor;
+    private javax.swing.JLabel lb_usuario;
     private javax.swing.JLabel lb_viernes;
     private javax.swing.JLabel lb_viernes07Materia;
     private javax.swing.JLabel lb_viernes07Profesor;
