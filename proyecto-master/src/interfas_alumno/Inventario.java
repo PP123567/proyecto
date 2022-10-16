@@ -223,6 +223,7 @@ public class Inventario extends javax.swing.JFrame {
         lb_caracteristicas.setText(" ");
         pn_gris.add(lb_caracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 330, 210));
 
+        cb_laboratorios.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_laboratorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_laboratorios.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -236,6 +237,7 @@ public class Inventario extends javax.swing.JFrame {
         lb_equipoDeComputo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lb_equipoDeComputo.setText("Equipo de computo:");
 
+        cb_equipoDeComputo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_equipoDeComputo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         bt_consultar.setBackground(new java.awt.Color(107, 8, 48));

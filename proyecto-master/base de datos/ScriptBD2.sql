@@ -1,6 +1,5 @@
 CREATE DATABASE LABORATORIOS_DE_COMPUTO;
 
-
 USE LABORATORIOS_DE_COMPUTO;
 
 CREATE TABLE Salones(
@@ -45,10 +44,9 @@ FOREIGN KEY  (Materia) REFERENCES Materias(Nombre)
 CREATE TABLE Rondines(
 Id int  PRIMARY KEY AUTO_INCREMENT,
 Fecha datetime default CURRENT_TIMESTAMP,
-Administrador int(11),
+Administrador varchar(50),
 Salon varchar(10),
 Comentario varchar(350),
-FOREIGN KEY  (Administrador) REFERENCES Usuarios(Id),
 FOREIGN KEY  (Salon) REFERENCES Salones(Id)
 );
 
@@ -150,11 +148,11 @@ values
 
 INSERT INTO Observaciones (Id, Fecha, Usuario, Equipo, Comentario, Estado) values ('374743', '2020-01-01 15:10:10', '2030178', 'LAS-PC1', 'Equipo funcional', 'Activo');
 
-SELECT *FROM Usuarios;
-truncate table  Mensajes;
 INSERT INTO Mensajes (Id, Administrador, Asunto, Cuerpo, TipoDeUsuarioAlQueSeDirige, Estado) 
 values
  ('374745', '2030178', 'Maquina', 'La maquina no funciona', 'Docente', 'Inactivo')
  ;
-SELECT Id FROM Equipos WHERE Salon='LAS'
 
+SELECT *FROM Rondines;
+
+SELECT Nombre FROM Usuarios WHERE TipoUsuario='Estudiante'

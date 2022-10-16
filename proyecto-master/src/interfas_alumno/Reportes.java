@@ -342,17 +342,17 @@ public class Reportes extends javax.swing.JFrame {
         Connection connection = Base_datos.getConnection();
         Statement stmt;
         ResultSet rs;
-        ArrayList  laboratorios =new ArrayList<>();
+        ArrayList  equipo =new ArrayList<>();
         try {
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT Id FROM Equipos");
             while (rs.next()) {
-                laboratorios.add(rs.getString("Id"));
+                equipo.add(rs.getString("Id"));
             }
         } catch (SQLException ex) {
             
         }
-        return laboratorios;
+        return equipo;
     }
     private void llenar_Equipos(){
         ArrayList equipos = llena_equ();
@@ -366,29 +366,29 @@ public class Reportes extends javax.swing.JFrame {
         }
     }
     
-    //aqui se llenan el combobox de tipo equipo
+    //aqui se llenan el combobox de tipo Alumnos
     private ArrayList<Integer> llena_alum() {
         Connection connection = Base_datos.getConnection();
         Statement stmt;
         ResultSet rs;
-        ArrayList  laboratorios =new ArrayList<>();
+        ArrayList  Alumnos =new ArrayList<>();
         try {
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT Nombre FROM Usuarios WHERE TipoUsuario='Estudiante'");
             while (rs.next()) {
-                laboratorios.add(rs.getString("Nombre"));
+                Alumnos.add(rs.getString("Nombre"));
             }
         } catch (SQLException ex) {
            
         }
-        return laboratorios;
+        return Alumnos;
     }
     private void llenar_Alumnos(){
-        ArrayList equipos = llena_alum();
+        ArrayList Alumnos = llena_alum();
         try {
             cb_tipoc.removeAllItems();
-                 for (int i = 0; i <= equipos.size(); i++) {
-                cb_tipoc.addItem(equipos.get(i).toString());
+                 for (int i = 0; i <= Alumnos.size(); i++) {
+                cb_tipoc.addItem(Alumnos.get(i).toString());
             }
         } catch (Exception ex) {
            
@@ -399,52 +399,52 @@ public class Reportes extends javax.swing.JFrame {
         Connection connection = Base_datos.getConnection();
         Statement stmt;
         ResultSet rs;
-        ArrayList  laboratorios =new ArrayList<>();
+        ArrayList  salones =new ArrayList<>();
         try {
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT Id FROM Salones");
             while (rs.next()) {
-                laboratorios.add(rs.getString("Id"));
+                salones.add(rs.getString("Id"));
             }
         } catch (SQLException ex) {
             
         }
-        return laboratorios;
+        return salones;
     }
     private void llenar_Salones(){
-        ArrayList equipos = llena_Salone();
+        ArrayList salones = llena_Salone();
         try {
             cb_tipoc.removeAllItems();
-                 for (int i = 0; i <= equipos.size(); i++) {
-                cb_tipoc.addItem(equipos.get(i).toString());
+                 for (int i = 0; i <= salones.size(); i++) {
+                cb_tipoc.addItem(salones.get(i).toString());
             }
         } catch (Exception ex) {
             
         }
     }
-    //aqui se llenan el combobox de tipo equipo
+    //aqui se llenan el combobox de tipo Profesores
     private ArrayList<Integer> llena_Profesore() {
         Connection connection = Base_datos.getConnection();
         Statement stmt;
         ResultSet rs;
-        ArrayList  laboratorios =new ArrayList<>();
+        ArrayList  Profesores =new ArrayList<>();
         try {
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT Nombre FROM Usuarios WHERE TipoUsuario='Docente'");
             while (rs.next()) {
-                laboratorios.add(rs.getString("Nombre"));
+                Profesores.add(rs.getString("Nombre"));
             }
         } catch (SQLException ex) {
            
         }
-        return laboratorios;
+        return Profesores;
     }
     private void llenar_Profesores(){
-        ArrayList equipos = llena_Profesore();
+        ArrayList Profesores = llena_Profesore();
         try {
             cb_tipoc.removeAllItems();
-                 for (int i = 0; i <= equipos.size(); i++) {
-                cb_tipoc.addItem(equipos.get(i).toString());
+                 for (int i = 0; i <= Profesores.size(); i++) {
+                cb_tipoc.addItem(Profesores.get(i).toString());
             }
         } catch (Exception ex) {
             

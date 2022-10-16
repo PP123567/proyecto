@@ -5,6 +5,12 @@
  */
 package interfas_alumno;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +26,8 @@ public class Administrar_horario2 extends javax.swing.JFrame {
         initComponents();
         lb_usuario.setText(nom);
         cargarHoras();
+        llenar_Profesores();
+        llenar_Materias();
     }
     public void cargarHoras() {
         DefaultTableModel dtm = new DefaultTableModel();
@@ -329,6 +337,11 @@ public class Administrar_horario2 extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(107, 8, 48));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrador.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -336,7 +349,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
 
         lb_usuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lb_usuario.setForeground(new java.awt.Color(255, 255, 255));
-        lb_usuario.setText("usuario:");
+        lb_usuario.setText("Administrador");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -345,11 +358,14 @@ public class Administrar_horario2 extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lb_usuario, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(38, 38, 38))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lb_usuario))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel4)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +375,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(48, 48, 48)
+                        .addGap(44, 44, 44)
                         .addComponent(lb_usuario)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -474,10 +490,20 @@ public class Administrar_horario2 extends javax.swing.JFrame {
 
         cb_profesor.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_profesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_profesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_profesorActionPerformed(evt);
+            }
+        });
         jPanel3.add(cb_profesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 255, -1));
 
         cb_horaInicio.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cb_horaInicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00" }));
+        cb_horaInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_horaInicioActionPerformed(evt);
+            }
+        });
         jPanel3.add(cb_horaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 110, -1));
 
         cb_materia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -2755,7 +2781,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(1, 26, 93));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(244, 244, 244));
 
         lb_LAS.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lb_LAS.setText("LAS");
@@ -2880,7 +2906,7 @@ public class Administrar_horario2 extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2954,6 +2980,88 @@ public class Administrar_horario2 extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_bt_notificacionesActionPerformed
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        cerrar();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void cb_horaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_horaInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_horaInicioActionPerformed
+
+    private void cb_profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_profesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_profesorActionPerformed
+
+    //funcion para cerrar con el jlabel de la imagen
+    public void cerrar(){
+        Object [] opciones ={"Aceptar","Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea realizar cerrar la aplicacion","Mensaje de Confirmacion",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION)
+        {
+        System.exit(0);
+        }else{
+        }
+    }
+    
+    //aqui se llenan el combobox de tipo equipo
+    private ArrayList<Integer> llena_Profesore() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  Profesor =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Nombre FROM Usuarios WHERE TipoUsuario='Docente'");
+            while (rs.next()) {
+                Profesor.add(rs.getString("Nombre"));
+            }
+        } catch (SQLException ex) {
+           
+        }
+        return Profesor;
+    }
+    private void llenar_Profesores(){
+        ArrayList Profesor = llena_Profesore();
+        try {
+            cb_profesor.removeAllItems();
+                 for (int i = 0; i <= Profesor.size(); i++) {
+                cb_profesor.addItem(Profesor.get(i).toString());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
+  
+    //aqui se llenan el combobox de tipo Materia
+    private ArrayList<Integer> llena_Materia() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  Materia =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Nombre FROM Materias");
+            while (rs.next()) {
+                Materia.add(rs.getString("Nombre"));
+            }
+        } catch (SQLException ex) {
+           
+        }
+        return Materia;
+    }
+    private void llenar_Materias(){
+        ArrayList Materia = llena_Profesore();
+        try {
+            cb_materia.removeAllItems();
+                 for (int i = 0; i <= Materia.size(); i++) {
+                cb_materia.addItem(Materia.get(i).toString());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */

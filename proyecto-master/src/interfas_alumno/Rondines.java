@@ -5,7 +5,14 @@
  */
 package interfas_alumno;
 
-import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +26,7 @@ public class Rondines extends javax.swing.JFrame {
     public Rondines(final String nom) {
         initComponents();
         lb_nomusuarios.setText(nom);
+        llenar_Salones();
     }
 
     /**
@@ -60,7 +68,7 @@ public class Rondines extends javax.swing.JFrame {
 
         lb_nomusuarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lb_nomusuarios.setForeground(new java.awt.Color(255, 255, 255));
-        lb_nomusuarios.setText("usuario:");
+        lb_nomusuarios.setText("Administrador");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,31 +81,29 @@ public class Rondines extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lb_nomusuarios)
-                .addGap(46, 46, 46))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(219, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addGap(38, 38, 38)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lb_nomusuarios)
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(48, 48, 48))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lb_nomusuarios)
-                        .addGap(36, 36, 36))))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(jLabel4)
-                    .addContainerGap(96, Short.MAX_VALUE)))
+                        .addGap(42, 42, 42))))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/isc350X140.png"))); // NOI18N
@@ -165,7 +171,7 @@ public class Rondines extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(bt_administarHorarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(bt_administarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(bt_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,32 +208,42 @@ public class Rondines extends javax.swing.JFrame {
         lb_salon.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lb_salon.setText("Salón:");
 
-        ta_observacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ta_observacion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        ta_observacion.setFont(new java.awt.Font("Tahoma", 0, 26)); // NOI18N
+        ta_observacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lb_observaciones.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lb_observaciones.setText("Observaciones:");
 
-        bt_registrar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        bt_registrar.setBackground(new java.awt.Color(107, 8, 48));
+        bt_registrar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        bt_registrar.setForeground(new java.awt.Color(255, 255, 255));
         bt_registrar.setText("Registrar rondin");
+        bt_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_registrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_registrar)
+                .addGap(389, 389, 389))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ta_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_salon, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lb_salon)
                             .addComponent(lb_observaciones)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(426, 426, 426)
-                        .addComponent(bt_registrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addComponent(ta_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,12 +254,14 @@ public class Rondines extends javax.swing.JFrame {
                 .addComponent(cb_salon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lb_observaciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ta_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(ta_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_registrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
+
+        ta_observacion.getAccessibleContext().setAccessibleDescription("");
 
         jPanel2.setBackground(new java.awt.Color(1, 26, 93));
 
@@ -251,7 +269,7 @@ public class Rondines extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +335,58 @@ public class Rondines extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_bt_notificacionesActionPerformed
 
+    private void bt_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarActionPerformed
+       String Administrador= lb_nomusuarios.getText();
+       String Salon=(String) cb_salon.getSelectedItem();
+       String Comentario=ta_observacion.getText();
+        try{
+            if(ta_observacion.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(null,"Campo vacios","Campo vacios",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/img/documento.png"));
+            }else{
+            Connection connection = Base_datos.getConnection();
+            PreparedStatement ps=connection.prepareStatement("INSERT INTO Rondines (Administrador ,Salon,Comentario )VALUES(?,?,?)");
+            ps.setString(1, Administrador);
+            ps.setString(2, Salon);
+            ps.setString(3, Comentario);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Registro Guardado","Registro Guardado",JOptionPane.PLAIN_MESSAGE,new ImageIcon("src/webservices-http-api-playsms-para-agregar-una-cuenta-de-usuario.png"));
+            }
+        }catch(SQLException ex){
+            System.out.println(""+ex);
+        }
+    }//GEN-LAST:event_bt_registrarActionPerformed
+
+    
+    
+    //aqui se llenan el combobox de tipo salones
+    private ArrayList<Integer> llena_Salone() {
+        Connection connection = Base_datos.getConnection();
+        Statement stmt;
+        ResultSet rs;
+        ArrayList  salones =new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT Id FROM Salones");
+            while (rs.next()) {
+                salones.add(rs.getString("Id"));
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return salones;
+    }
+    private void llenar_Salones(){
+        ArrayList salones = llena_Salone();
+        try {
+            cb_salon.removeAllItems();
+                 for (int i = 0; i <= salones.size(); i++) {
+                cb_salon.addItem(salones.get(i).toString());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
