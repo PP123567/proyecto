@@ -26,6 +26,8 @@ public class login extends javax.swing.JFrame {
      * Creates new form login
      */
     public login() {
+        setUndecorated(true);
+        setBackground(new Color(108,246,248,0));
         initComponents();
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel_principalImagen,"src/img/lab.jpg");
