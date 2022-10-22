@@ -2995,14 +2995,22 @@ public class Administrar_horario2 extends javax.swing.JFrame {
     //funcion para cerrar con el jlabel de la imagen
     public void cerrar(){
         Object [] opciones ={"Aceptar","Cancelar"};
+<<<<<<< HEAD
         int eleccion = JOptionPane.showOptionDialog(rootPane,"Desea Cerrar su Sesion","Mensaje de Confirmacion",
+=======
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea realizar cerrar la aplicacion","Mensaje de Confirmacion",
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
         JOptionPane.YES_NO_OPTION,
         JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         if (eleccion == JOptionPane.YES_OPTION)
         {
+<<<<<<< HEAD
         login ventana = new login( );
                 ventana.setVisible(true);
                 this.setVisible(false);
+=======
+        System.exit(0);
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
         }else{
         }
     }

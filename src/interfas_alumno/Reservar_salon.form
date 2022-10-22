@@ -80,9 +80,12 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lb_usuarioMouseClicked"/>
           </Events>
+=======
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
         </Component>
       </SubComponents>
     </Container>

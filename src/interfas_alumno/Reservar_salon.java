@@ -96,11 +96,14 @@ public class Reservar_salon extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(107, 8, 48));
 
         lb_usuario.setBackground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         lb_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lb_usuarioMouseClicked(evt);
             }
         });
+=======
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -509,6 +512,7 @@ public class Reservar_salon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< HEAD
 
     private void lb_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_usuarioMouseClicked
         cerrar();
@@ -526,6 +530,8 @@ public class Reservar_salon extends javax.swing.JFrame {
         }else{
         }
     }
+=======
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
     private void verificar(String tipo) {
         try {
             String asunto="";
@@ -539,7 +545,10 @@ public class Reservar_salon extends javax.swing.JFrame {
             }
             if(!"".equals(asunto)){
             mensaje ventana = new mensaje(tipo);
+<<<<<<< HEAD
             ventana.setAlwaysOnTop(true);
+=======
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
             ventana.setVisible(true);
             this.setVisible(false);
             }

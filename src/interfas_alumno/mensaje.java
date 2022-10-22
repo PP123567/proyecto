@@ -8,6 +8,10 @@ package interfas_alumno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
+=======
+import javax.swing.ImageIcon;
+>>>>>>> ad7456b14e727a67ee462481ab2202799f6b5f04
 import javax.swing.JOptionPane;
 
 /**
